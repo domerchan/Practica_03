@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora</title>
+	<style type="text/css">
+		table {
+			width: 250px;
+			border: 1px solid black;
+		}
+
+		th {
+			border: 1px solid black;
+			padding: 0px;
+			height: 40px;
+			width: 40px;
+		}
+
+		input {
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+		}
+
+		#res {
+			height: 40px;
+			width: 247px;
+			margin: 0px;
+			background-color: #fff;
+			border: 1px solid black;
+			text-align: right;
+			padding-top: 20px;
+			padding-right: 5px;
+		}
+	</style>
+</head>
+<body>
+
+	<div>
+		<table>
+			<tr>
+				<td colspan="4"><p id="res"></p></td>
+			</tr>
+
+			<tr>
+				<th><input type="button" id="ce" onclick="borrarResultado()" value="CE"></th>
+				<th><input type="button" id="c" onclick="borrarTodo()" value="C"></th>
+				<th><input type="button" id="bor" onclick="borrarUno()" value="<-"></th>
+				<th><input type="button" id="div" onclick="escribir(' / ')" value="/"></th>
+			</tr>
+
+			<tr>
+				<th><input type="button" id="b7" onclick="escribir('7')" value="7"></th>
+				<th><input type="button" id="b8" onclick="escribir('8')" value="8"></th>
+				<th><input type="button" id="b9" onclick="escribir('9')" value="9"></th>
+				<th><input type="button" id="mul" onclick="escribir(' * ')" value="X"></th>
+			</tr>
+
+			<tr>
+				<th><input type="button" id="b4" onclick="escribir('4')" value="4"></th>
+				<th><input type="button" id="b5" onclick="escribir('5')" value="5"></th>
+				<th><input type="button" id="b6" onclick="escribir('6')" value="6"></th>
+				<th><input type="button" id="men" onclick="escribir(' - ')" value="-"></th>
+			</tr>
+
+			<tr>
+				<th><input type="button" id="b1" onclick="escribir('1')" value="1"></th>
+				<th><input type="button" id="b2" onclick="escribir('2')" value="2"></th>
+				<th><input type="button" id="b3" onclick="escribir('3')" value="3"></th>
+				<th><input type="button" id="sum" onclick="escribir(' + ')" value="+"></th>
+			</tr>
+
+			<tr>
+				<th><input type="button" id="mm" onclick="" value=""></th>
+				<th><input type="button" id="b0" onclick="" value="0"></th>
+				<th><input type="button" id="com" onclick="escribir('.')" value=","></th>
+				<th><input type="button" id="igl" onclick="resolver()" value="="></th>
+			</tr>
+
+			<p id="p"></p>
+		</table>
+	</div>
+
+	<p id="lab"></p>
+
+	<script type="text/javascript">
+		var operacion = "";
+		function escribir(val) {
+			operacion += val;
+			document.getElementById("res").innerHTML = operacion;
+		}
+
+		function resolver() {
+			var res = eval(operacion);
+			document.getElementById("res").innerHTML = operacion + "<br>" + res;
+		}
+
+		function borrarUno() {
+			operacion = operacion.substr(0,operacion.length - 1)
+			document.getElementById("res").innerHTML = operacion;
+		}
+
+		function borrarResultado() {
+			document.getElementById("res").innerHTML = operacion;
+		}
+
+		function borrarTodo() {
+			operacion = "";
+			document.getElementById("res").innerHTML = operacion;
+		}
+	</script>
+
+</body>
+</html>
