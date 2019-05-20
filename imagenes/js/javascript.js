@@ -13,6 +13,8 @@ function iniciar() {
 	for(i = 0; i < 5; i++) 
 		array.splice(Math.floor(Math.random() * array.length), 1);
 
+	shuffle(array);
+
 	for(i = 0; i < 5; i++) 
 		document.getElementById(i).src = "img/"+ array[i] +".jpg";
 }
@@ -39,4 +41,8 @@ function showDivs(n) {
 	}
 
 	x[slideIndex-1].style.display = "block"; 
+}
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
 }
